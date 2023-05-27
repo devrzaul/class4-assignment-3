@@ -42,7 +42,7 @@ const getmark = (marks) => {
         grad = 'A'
         gpa  =  4
        return `GPA ${gpa} Gread ${grad}`
-    } else if (marks >= 80 && marks < 100) {
+    } else if (marks >= 80 && marks <= 100) {
         grad = 'A+'
         gpa  =  5
        return `GPA ${gpa} Gread ${grad}`
@@ -73,18 +73,18 @@ const resultCal = (ban, eng, math, sc, ss, reli) =>{
       let reli_result = getmark(reli);
 
       let totalCgpa;
-
-      if( ban > 33 && eng > 33 && math > 33 && sc > 33 && ss > 33 && reli > 33 ){
-         totalCgpa = (result_ban + result_eng + result_math + result_sc + result_ss + result_reli ) / 6;
-      }else{
-        totalCgpa = 0;
-      }
+      if( ban >= 33 && eng >= 33 && math >= 33 && sc >= 33 && ss >= 33 && reli >= 33 ){
+        totalCgpa = (ban_mark + eng_mark + math_mark + sc_mark + ss_mark + reli_mark ) / 6 /20 ;
+        
+     } else{
+       totalCgpa = 0;
+     }
 
       return`
           
       Bangla Result = ${ban} / ${ban_result}
       Enaglish Result = ${eng} / ${eng_result}
-      Math Result = ${math} /   ${math_result}
+      Math Result = ${math} /  ${math_result}
       Science Result = ${sc} /  ${sc_result}
       Social Science Result = ${ss} /${ss_result}
       Religion Result = ${reli} / ${reli_result}
@@ -92,7 +92,6 @@ const resultCal = (ban, eng, math, sc, ss, reli) =>{
       Your CGPA is = ${totalCgpa}
         
       `
-
 }
 
 console.log(resultCal(ban_mark, eng_mark, math_mark, sc_mark, ss_mark, reli_mark));
